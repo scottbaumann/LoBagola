@@ -1,6 +1,6 @@
 from bidi_hi_vol_IBapi import *
 from bidi_hi_vol_functions import *
-# test change
+
 info = {"stop": False}
 account = {"prod": "U3005079", "paper": "DU2186704"}  # switch this to prod account when needed
 socket = {"prod": 7496, "paper": 7497}  # paper socket is 7497, prod socket is 7496

@@ -5,7 +5,7 @@ import threading
 import time
 import random
 from datetime import datetime
-# test change
+
 
 # determines if passed value is an even number
 def is_even(val):

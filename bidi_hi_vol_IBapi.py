@@ -2,7 +2,7 @@ from ibapi.client import EClient
 from ibapi.ticktype import TickTypeEnum
 from ibapi.wrapper import EWrapper
 from bidi_hi_vol_functions import *
-# test change
+
 info = {"stop": False}
 
 # configurable contract
