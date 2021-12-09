@@ -1,5 +1,5 @@
-from bidi_hi_vol_IBapi import *
-from bidi_hi_vol_functions import *
+from bidihi_IBapi import *
+from bidihi_functions import *
 
 info = {"stop": False}
 account = {"prod": "U3005079", "paper": "DU2186704"}  # switch this to prod account when needed
