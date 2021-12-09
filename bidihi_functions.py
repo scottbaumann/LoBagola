@@ -78,7 +78,7 @@ def create_buy_order(price, first_fill_price, last_fill_price, min_tick, is_orde
     it prints countdown timer to determine wait time
     """
 
-    if price < (first_fill_price - (300 * min_tick)) and last_fill_price != 0:
+    if price < (first_fill_price - (1000 * min_tick)) and last_fill_price != 0:
         stop_price = first_fill_price
         limit_price = (first_fill_price + (1 * min_tick))
 
@@ -94,7 +94,7 @@ def create_buy_order(price, first_fill_price, last_fill_price, min_tick, is_orde
             print("BUY MKT conditions met")
             print("++++++++++++++++++++++")
     else:
-        if is_order_filled:
+        if is_order_filled and time_diff.total_seconds() < wait_time:
             print("Elapsed time = ", int(time_diff.total_seconds()), "/", wait_time)
 
 
@@ -114,7 +114,7 @@ def create_sell_order(price, first_fill_price, last_fill_price, min_tick, is_ord
     it prints countdown timer to determine wait time
     """
 
-    if price > (first_fill_price + (300 * min_tick)) and last_fill_price != 0:
+    if price > (first_fill_price + (1000 * min_tick)) and last_fill_price != 0:
         stop_price = first_fill_price
         limit_price = (first_fill_price - (1 * min_tick))
         if is_order_filled:
@@ -129,7 +129,7 @@ def create_sell_order(price, first_fill_price, last_fill_price, min_tick, is_ord
             print("SELL MKT conditions met")
             print("-----------------------")
     else:
-        if is_order_filled:
+        if is_order_filled and time_diff.total_seconds() < wait_time:
             print("Elapsed time = ", int(time_diff.total_seconds()), "/", wait_time)
 
 

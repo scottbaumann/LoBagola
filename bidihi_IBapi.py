@@ -26,7 +26,7 @@ class IBapi(EWrapper, EClient):
         self.last_order_action = ""
         self.current_price = ""
         # configurable variables
-        self.target_pnl = 1000
+        self.target_pnl = 5000
         self.wait_time = 8
         self.order_quantity = 1
 
@@ -140,4 +140,4 @@ class IBapi(EWrapper, EClient):
             self.disconnect()
 
         print("daily pnl    = ", int(dailyPnL))
-        print("contract pnl = ", int(self.per_contract_pnl), "/", int(self.target_pnl))
+        # print("contract pnl = ", int(self.per_contract_pnl), "/", int(self.target_pnl))
