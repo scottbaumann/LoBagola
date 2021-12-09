@@ -1,5 +1,5 @@
-from bidihi_IBapi import *
-from bidihi_functions import *
+from LoBagola_IBapi import *
+from LoBagola_functions import *
 
 info = {"stop": False}
 account = {"prod": "U3005079", "paper": "DU2186704"}  # switch this to prod account when needed

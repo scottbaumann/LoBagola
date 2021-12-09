@@ -1,7 +1,7 @@
 from ibapi.client import EClient
 from ibapi.ticktype import TickTypeEnum
 from ibapi.wrapper import EWrapper
-from bidihi_functions import *
+from LoBagola_functions import *
 
 info = {"stop": False}
 
