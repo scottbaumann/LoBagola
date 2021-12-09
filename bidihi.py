@@ -1,6 +1,6 @@
 from bidihi_IBapi import *
 from bidihi_functions import *
-
+#test commit
 info = {"stop": False}
 account = {"prod": "U3005079", "paper": "DU2186704"}  # switch this to prod account when needed
 socket = {"prod": 7496, "paper": 7497}  # paper socket is 7497, prod socket is 7496
