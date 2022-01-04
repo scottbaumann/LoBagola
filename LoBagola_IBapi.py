@@ -6,7 +6,7 @@ from LoBagola_functions import *
 info = {"stop": False}
 
 # configurable contract
-es_contract = create_contract('ES', 'FUT', 'GLOBEX', "20211217")
+es_contract = create_contract('ES', 'FUT', 'GLOBEX', "20220318")
 
 
 class IBapi(EWrapper, EClient):
@@ -26,8 +26,8 @@ class IBapi(EWrapper, EClient):
         self.last_order_action = ""
         self.current_price = ""
         # configurable variables
-        self.target_pnl = 5000
-        self.wait_time = 8
+        self.target_pnl = 1000
+        self.wait_time = 30000
         self.order_quantity = 1
 
     def tickPrice(self, reqId, tickType, price, attrib):
@@ -122,13 +122,13 @@ class IBapi(EWrapper, EClient):
         if self.per_contract_pnl > self.target_pnl:
             if self.last_order_action == "BUY":
                 stop_price = self.current_price + (16 * self.min_tick)
-                limit_price = self.current_price + (17 * self.min_tick)
+                limit_price = self.current_price + (19 * self.min_tick)
                 print("+++++++++++++++++++++++++++++")
                 print("BUY stop limit order modified")
                 print("+++++++++++++++++++++++++++++")
             elif self.last_order_action == "SELL":
                 stop_price = self.current_price - (16 * self.min_tick)
-                limit_price = self.current_price - (17 * self.min_tick)
+                limit_price = self.current_price - (19 * self.min_tick)
                 print("------------------------------")
                 print("SELL stop limit order modified")
                 print("------------------------------")
