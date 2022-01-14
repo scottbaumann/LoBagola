@@ -79,15 +79,15 @@ def create_buy_order(price, first_fill_price, last_fill_price, min_tick, is_orde
     """
 
     if price < (first_fill_price - (8 * min_tick)) and last_fill_price != 0:
-        stop_price = (first_fill_price - (4 * min_tick))
-        limit_price = first_fill_price
+        stop_price = (first_fill_price - (2 * min_tick))
+        limit_price = (first_fill_price + (1 * min_tick))
 
         if is_order_filled:
             order_thread_function(es_contract, "BUY", "STP LMT", order_quantity, app, stop_price, limit_price)
             print("++++++++++++++++++++++++++")
             print("BUY STP LMT conditions met")
             print("++++++++++++++++++++++++++")
-    elif time_diff.total_seconds() >= wait_time and price > (first_fill_price + (2 * min_tick)):
+    elif time_diff.total_seconds() >= wait_time and price > first_fill_price:
         if is_order_filled:
             order_thread_function(es_contract, "BUY", "MKT", order_quantity, app)
             print("++++++++++++++++++++++")
@@ -115,8 +115,8 @@ def create_sell_order(price, first_fill_price, last_fill_price, min_tick, is_ord
     """
 
     if price > (first_fill_price + (8 * min_tick)) and last_fill_price != 0:
-        stop_price = (first_fill_price + (4 * min_tick))
-        limit_price = first_fill_price
+        stop_price = (first_fill_price + (2 * min_tick))
+        limit_price = (first_fill_price - (1 * min_tick))
         if is_order_filled:
             order_thread_function(es_contract, "SELL", "STP LMT", order_quantity, app, stop_price, limit_price)
             print("---------------------------")
