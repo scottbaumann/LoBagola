@@ -139,5 +139,15 @@ class IBapi(EWrapper, EClient):
             # exit program
             self.disconnect()
 
+        elif self.per_contract_pnl < -500:
+            if self.current_price < self.first_fill_price:
+                make_order(es_contract, "BUY", "MKT", self.order_quantity, self, 0, 0, "")
+                print("BUY stop conditions met")
+            elif self.current_price > self.first_fill_price:
+                make_order(es_contract, "SELL", "MKT", self.order_quantity, self, 0, 0, "")
+                print("SELL stop condition met")
+
+            self.disconnect()
+
         print("daily pnl    = ", int(dailyPnL))
         print("contract pnl = ", int(self.per_contract_pnl), "/", int(self.target_pnl))

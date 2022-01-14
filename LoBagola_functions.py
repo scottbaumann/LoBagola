@@ -3,7 +3,6 @@ from ibapi.tag_value import TagValue
 from ibapi.order import *
 import threading
 import time
-import random
 from datetime import datetime
 
 
