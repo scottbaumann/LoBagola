@@ -77,7 +77,7 @@ def create_buy_order(price, first_fill_price, last_fill_price, min_tick, is_orde
     it prints countdown timer to determine wait time
     """
 
-    if price < (first_fill_price - (8 * min_tick)) and last_fill_price != 0:
+    if price < (first_fill_price - (4 * min_tick)) and last_fill_price != 0:
         stop_price = (first_fill_price - (2 * min_tick))
         limit_price = (first_fill_price + (1 * min_tick))
 
@@ -113,7 +113,7 @@ def create_sell_order(price, first_fill_price, last_fill_price, min_tick, is_ord
     it prints countdown timer to determine wait time
     """
 
-    if price > (first_fill_price + (8 * min_tick)) and last_fill_price != 0:
+    if price > (first_fill_price + (4 * min_tick)) and last_fill_price != 0:
         stop_price = (first_fill_price + (2 * min_tick))
         limit_price = (first_fill_price - (1 * min_tick))
         if is_order_filled:
