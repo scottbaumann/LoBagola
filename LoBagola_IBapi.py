@@ -26,7 +26,7 @@ class IBapi(EWrapper, EClient):
         self.last_order_action = ""
         self.current_price = ""
         # configurable variables
-        self.target_pnl = 500
+        self.target_pnl = 1500
         self.wait_time = 100000
         self.order_quantity = 1
 
@@ -139,7 +139,7 @@ class IBapi(EWrapper, EClient):
             # exit program
             self.disconnect()
 
-        elif self.per_contract_pnl < -500:
+        elif self.per_contract_pnl < -1000:
             if self.current_price > self.first_fill_price:
                 make_order(es_contract, "BUY", "MKT", self.order_quantity, self, 0, 0, "")
                 print("BUY stop conditions met")
