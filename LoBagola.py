@@ -13,7 +13,7 @@ def run_loop():
 
 # Connect to IB -----------------------------> configure prod vs paper here (1 of 2)
 app = IBapi()
-app.connect('127.0.0.1', socket['prod'], random.randint(1, 50000))
+app.connect('127.0.0.1', socket['paper'], random.randint(1, 50000))
 
 # Set nextOrderId to one
 app.nextorderId = 1
@@ -26,7 +26,7 @@ api_thread.start()
 app.reqContractDetails(1004, es_contract)
 
 # Request pnl updates ----------------------> configure prod vs paper here (2 of 2)
-app.reqPnL(1009, account['prod'], "")
+app.reqPnL(1009, account['paper'], "")
 
 # Request Market Data
 app.reqMktData(1, es_contract, '', False, False, [])
