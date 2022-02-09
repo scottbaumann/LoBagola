@@ -26,8 +26,8 @@ class IBapi(EWrapper, EClient):
         self.last_order_action = ""
         self.current_price = ""
         # configurable variables
-        self.target_pnl = 500
-        self.wait_time = 100
+        self.target_pnl = 550
+        self.wait_time = 30000
         self.order_quantity = 1
 
     def tickPrice(self, reqId, tickType, price, attrib):
@@ -121,14 +121,14 @@ class IBapi(EWrapper, EClient):
 
         if self.per_contract_pnl > self.target_pnl:
             if self.last_order_action == "BUY":
-                stop_price = self.current_price + (16 * self.min_tick)
-                limit_price = self.current_price + (19 * self.min_tick)
+                stop_price = self.current_price + (4 * self.min_tick)
+                limit_price = self.current_price + (8 * self.min_tick)
                 print("+++++++++++++++++++++++++++++")
                 print("BUY stop limit order modified")
                 print("+++++++++++++++++++++++++++++")
             elif self.last_order_action == "SELL":
-                stop_price = self.current_price - (16 * self.min_tick)
-                limit_price = self.current_price - (19 * self.min_tick)
+                stop_price = self.current_price - (4 * self.min_tick)
+                limit_price = self.current_price - (8 * self.min_tick)
                 print("------------------------------")
                 print("SELL stop limit order modified")
                 print("------------------------------")
@@ -139,7 +139,7 @@ class IBapi(EWrapper, EClient):
             # exit program
             self.disconnect()
 
-        elif self.per_contract_pnl < -1000:
+        elif self.per_contract_pnl < -2000:
             if self.current_price > self.first_fill_price:
                 make_order(es_contract, "BUY", "MKT", self.order_quantity, self, 0, 0, "")
                 print("BUY stop conditions met")
