@@ -6,7 +6,7 @@ from LoBagola_functions import *
 info = {"stop": False}
 
 # configurable contract
-es_contract = create_contract('CL', 'FUT', 'GLOBEX', "20230123")
+es_contract = create_contract('ES', 'FUT', 'CME', "20230317")
 
 
 class IBapi(EWrapper, EClient):

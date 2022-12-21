@@ -142,6 +142,8 @@ def make_order(contract, action, order_type, quantity, app, stop_price=0, limit_
     order.action = action
     order.totalQuantity = quantity
     order.orderType = order_type
+    order.eTradeOnly = ''
+    order.firmQuoteOnly = ''
 
     """
     Conditions to check for the type of order being placed
