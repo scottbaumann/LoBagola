@@ -77,9 +77,9 @@ def create_buy_order(price, first_fill_price, last_fill_price, min_tick, is_orde
     it prints countdown timer to determine wait time
     """
 
-    if price < (last_fill_price - (8 * min_tick)) and last_fill_price != 0:
-        stop_price = (last_fill_price - (4 * min_tick))
-        limit_price = last_fill_price
+    if price < (first_fill_price - (20 * min_tick)) and last_fill_price != 0:
+        stop_price = (first_fill_price - (4 * min_tick))
+        limit_price = first_fill_price
 
         if is_order_filled:
             order_thread_function(es_contract, "BUY", "STP LMT", order_quantity, app, stop_price, limit_price)
@@ -113,9 +113,9 @@ def create_sell_order(price, first_fill_price, last_fill_price, min_tick, is_ord
     it prints countdown timer to determine wait time
     """
 
-    if price > (last_fill_price + (8 * min_tick)) and last_fill_price != 0:
-        stop_price = (last_fill_price + (4 * min_tick))
-        limit_price = last_fill_price
+    if price > (first_fill_price + (20 * min_tick)) and last_fill_price != 0:
+        stop_price = (first_fill_price + (4 * min_tick))
+        limit_price = first_fill_price
         if is_order_filled:
             order_thread_function(es_contract, "SELL", "STP LMT", order_quantity, app, stop_price, limit_price)
             print("---------------------------")
