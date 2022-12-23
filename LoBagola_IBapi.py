@@ -27,7 +27,7 @@ class IBapi(EWrapper, EClient):
         self.current_price = ""
         # configurable variables
         self.target_pnl = 1000
-        self.wait_time = 100000
+        self.wait_time = 600
         self.order_quantity = 1
 
     def tickPrice(self, reqId, tickType, price, attrib):
