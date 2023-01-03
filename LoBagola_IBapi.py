@@ -121,14 +121,14 @@ class IBapi(EWrapper, EClient):
 
         if self.per_contract_pnl > self.target_pnl:
             if self.last_order_action == "BUY":
-                stop_price = self.current_price + (4 * self.min_tick)
-                limit_price = self.current_price + (8 * self.min_tick)
+                stop_price = self.current_price + (16 * self.min_tick)
+                limit_price = self.current_price + (20 * self.min_tick)
                 print("+++++++++++++++++++++++++++++")
                 print("BUY stop limit order modified")
                 print("+++++++++++++++++++++++++++++")
             elif self.last_order_action == "SELL":
-                stop_price = self.current_price - (4 * self.min_tick)
-                limit_price = self.current_price - (8 * self.min_tick)
+                stop_price = self.current_price - (16 * self.min_tick)
+                limit_price = self.current_price - (20 * self.min_tick)
                 print("------------------------------")
                 print("SELL stop limit order modified")
                 print("------------------------------")
