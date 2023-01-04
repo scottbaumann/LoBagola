@@ -26,7 +26,7 @@ class IBapi(EWrapper, EClient):
         self.last_order_action = ""
         self.current_price = ""
         # configurable variables
-        self.target_pnl = 1000
+        self.target_pnl = 600
         self.wait_time = 600
         self.order_quantity = 1
 
