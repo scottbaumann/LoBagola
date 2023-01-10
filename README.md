@@ -41,5 +41,5 @@ The trade is exited when `target_pnl` is reached, at which point the stop limit 
 There are two significant risks, one is in the strategy itself and the other is in order execution:
 
 - Strategic risk: Similar to a long straddle, if the price does not move substantially above or below `first_fill_price` then there will be no profit.  Additionally, if the price whipsaws around `first_fill_price` then too many trades will be executed resulting in high trading costs.
-- Execution risk: Stop limit orders are used to get better fill prices than stop orders tend to have, but the risk is that a stop limit order won't get filled at all.  In my observation this has been rare but when it happens it requires manual intervention.
+- Execution risk: Stop limit orders are used to get better fill prices than stop orders tend to have, but the risk is that a stop limit order won't get filled at all.  In my observation this has been rare but when it happens it requires manual intervention. 
 
