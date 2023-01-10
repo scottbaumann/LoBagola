@@ -3,8 +3,8 @@ from LoBagola_functions import *
 import random
 
 info = {"stop": False}
-account = {"prod": "U3005079", "paper": "DU2186704"}  # switch this to prod account when needed
-socket = {"prod": 7496, "paper": 7497}  # paper socket is 7497, prod socket is 7496
+account = input('IB account number: ')
+socket = int(input('socket (7497 is paper, 7496 is prod): '))
 
 
 def run_loop():
@@ -13,7 +13,7 @@ def run_loop():
 
 # Connect to IB -----------------------------> configure prod vs paper here (1 of 2)
 app = IBapi()
-app.connect('127.0.0.1', socket['prod'], random.randint(1, 50000))
+app.connect('127.0.0.1', socket, random.randint(1, 50000))
 
 # Set nextOrderId to one
 app.nextorderId = 1
@@ -26,7 +26,7 @@ api_thread.start()
 app.reqContractDetails(1004, es_contract)
 
 # Request pnl updates ----------------------> configure prod vs paper here (2 of 2)
-app.reqPnL(1009, account['prod'], "")
+app.reqPnL(1009, account, "")
 
 # Request Market Data
 app.reqMktData(1, es_contract, '', False, False, [])
