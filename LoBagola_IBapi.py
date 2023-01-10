@@ -6,7 +6,7 @@ from LoBagola_functions import *
 info = {"stop": False}
 
 # configurable contract
-es_contract = create_contract('ES', 'FUT', 'CME', "20230317")
+fut_contract = create_contract('ES', 'FUT', 'CME', "20230317")
 
 
 class IBapi(EWrapper, EClient):
@@ -46,7 +46,7 @@ class IBapi(EWrapper, EClient):
                     create_buy_order(price, self.first_fill_price,
                                      self.last_fill_price,
                                      self.min_tick, self.is_order_filled
-                                     , es_contract,
+                                     , fut_contract,
                                      self.order_quantity * 2, self.start_time,
                                      self.wait_time,
                                      self)
@@ -59,7 +59,7 @@ class IBapi(EWrapper, EClient):
                     create_sell_order(price, self.first_fill_price,
                                       self.last_fill_price,
                                       self.min_tick, self.is_order_filled,
-                                      es_contract,
+                                      fut_contract,
                                       self.order_quantity * 2,
                                       self.start_time, self.wait_time,
                                       self)
@@ -134,17 +134,17 @@ class IBapi(EWrapper, EClient):
                 print("------------------------------")
 
             # modify the last order placed
-            order_thread_function(es_contract, self.last_order_action, self.last_order_type, self.order_quantity, self,
+            order_thread_function(fut_contract, self.last_order_action, self.last_order_type, self.order_quantity, self,
                                   stop_price, limit_price, current_order_id)
             # exit program
             self.disconnect()
 
         elif self.per_contract_pnl < -5000:
             if self.current_price > self.first_fill_price:
-                make_order(es_contract, "BUY", "MKT", self.order_quantity, self, 0, 0, "")
+                make_order(fut_contract, "BUY", "MKT", self.order_quantity, self, 0, 0, "")
                 print("BUY stop conditions met")
             elif self.current_price < self.first_fill_price:
-                make_order(es_contract, "SELL", "MKT", self.order_quantity, self, 0, 0, "")
+                make_order(fut_contract, "SELL", "MKT", self.order_quantity, self, 0, 0, "")
                 print("SELL stop condition met")
 
             self.disconnect()
