@@ -6,7 +6,7 @@ from LoBagola_functions import *
 info = {"stop": False}
 
 # configurable contract
-fut_contract = create_contract('ES', 'FUT', 'CME', "20230317")
+fut_contract = create_contract(input('contract: '), 'FUT', input('exchange: '), input('last day of trading: '))
 
 
 class IBapi(EWrapper, EClient):
