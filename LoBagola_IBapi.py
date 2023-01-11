@@ -6,7 +6,7 @@ from LoBagola_functions import *
 info = {"stop": False}
 
 # configurable contract
-fut_contract = create_contract(input('contract: '), 'FUT', input('exchange: '), input('last day of trading: '))
+fut_contract = create_contract(input('contract: '), 'FUT', input('exchange: '), input('last day of trading YYYYMMDD: '))
 
 
 class IBapi(EWrapper, EClient):
@@ -26,9 +26,9 @@ class IBapi(EWrapper, EClient):
         self.last_order_action = ""
         self.current_price = ""
         # configurable variables
-        self.target_pnl = 1200
-        self.wait_time = 600
-        self.order_quantity = 1
+        self.target_pnl = int(input('target pnl: '))
+        self.wait_time = int(input('wait time: '))
+        self.order_quantity = int(input('quantity (number of contracts): '))
 
     def tickPrice(self, reqId, tickType, price, attrib):
         if self.loop_count == 0:
